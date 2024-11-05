@@ -8,12 +8,46 @@ public class Cliente {
 
     @Id
     private String id;
-
-    private String nome;
-    private String cpf;
     private String email;
-    private String tipoCliente; // Físico ou Jurídico
-    private String telefone;
+    private TipoCliente tipoCliente;
+
+    public Cliente() {}
+
+    public Cliente(String email, TipoCliente tipoCliente) {
+        this.email = email;
+        this.tipoCliente = tipoCliente;
+    }
 
     // Getters e Setters
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public TipoCliente getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(TipoCliente tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
+
+    // Enum TipoCliente
+
+    public enum TipoCliente {
+        FISICO,
+        JURIDICO
+    }
 }
