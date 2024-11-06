@@ -10,12 +10,14 @@ public class Cliente {
     private String id;
     private String email;
     private TipoCliente tipoCliente;
+    private String cpf;  // Novo campo CPF
 
     public Cliente() {}
 
-    public Cliente(String email, TipoCliente tipoCliente) {
+    public Cliente(String email, TipoCliente tipoCliente, String cpf) {
         this.email = email;
         this.tipoCliente = tipoCliente;
+        this.cpf = cpf;
     }
 
     // Getters e Setters
@@ -42,6 +44,14 @@ public class Cliente {
 
     public void setTipoCliente(TipoCliente tipoCliente) {
         this.tipoCliente = tipoCliente;
+    }
+
+    public String getCpf() {      // Getter para CPF
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {   // Setter para CPF
+        this.cpf = cpf;
     }
 
     // Enum TipoCliente
