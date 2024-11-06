@@ -38,6 +38,7 @@ public class ClienteService {
         return clienteRepository.findById(id).map(cliente -> {
             cliente.setEmail(clienteAtualizado.getEmail());
             cliente.setTipoCliente(clienteAtualizado.getTipoCliente());
+            cliente.setTelefone(clienteAtualizado.getTelefone());
             return clienteRepository.save(cliente);
         });
     }
