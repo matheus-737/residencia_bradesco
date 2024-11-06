@@ -38,7 +38,6 @@ public class ClienteService {
         return clienteRepository.findById(id).map(cliente -> {
             cliente.setEmail(clienteAtualizado.getEmail());
             cliente.setTipoCliente(clienteAtualizado.getTipoCliente());
-            cliente.setCpf(clienteAtualizado.getCpf()); // Atualizar o CPF
             return clienteRepository.save(cliente);
         });
     }
@@ -52,4 +51,3 @@ public class ClienteService {
         return false;
     }
 }
-
