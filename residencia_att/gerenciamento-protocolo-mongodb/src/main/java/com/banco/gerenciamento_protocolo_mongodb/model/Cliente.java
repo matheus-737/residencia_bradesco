@@ -8,13 +8,18 @@ public class Cliente {
 
     @Id
     private String id;
-    private String email;
-    private TipoCliente tipoCliente;
-    private Telefone telefone;
+
+    private String nome;  // Primeiro: Nome
+    private String cpf;   // Segundo: CPF
+    private String email; // Terceiro: E-mail
+    private TipoCliente tipoCliente; // Quarto: Tipo de cliente
+    private Telefone telefone; // Quinto: Telefone
 
     public Cliente() {}
 
-    public Cliente(String email, TipoCliente tipoCliente, Telefone telefone) {
+    public Cliente(String nome, String cpf, String email, TipoCliente tipoCliente, Telefone telefone) {
+        this.nome = nome;
+        this.cpf = cpf;
         this.email = email;
         this.tipoCliente = tipoCliente;
         this.telefone = telefone;
@@ -28,6 +33,22 @@ public class Cliente {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;  // Getter para o novo atributo
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;  // Setter para o novo atributo
+    }
+
+    public String getCpf() {
+        return cpf;  // Getter para o CPF
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;  // Setter para o CPF
     }
 
     public String getEmail() {

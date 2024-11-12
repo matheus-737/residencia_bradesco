@@ -24,6 +24,7 @@ public class ClienteController {
     // Endpoint para criar um novo cliente
     @PostMapping
     public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente cliente) {
+        // O cliente pode ser criado com os novos atributos na ordem correta
         Cliente novoCliente = clienteService.criarCliente(cliente);
         return new ResponseEntity<>(novoCliente, HttpStatus.CREATED);
     }

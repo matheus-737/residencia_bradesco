@@ -36,9 +36,11 @@ public class ClienteService {
     // Método para atualizar um cliente existente
     public Optional<Cliente> atualizarCliente(String id, Cliente clienteAtualizado) {
         return clienteRepository.findById(id).map(cliente -> {
-            cliente.setEmail(clienteAtualizado.getEmail());
-            cliente.setTipoCliente(clienteAtualizado.getTipoCliente());
-            cliente.setTelefone(clienteAtualizado.getTelefone());
+            cliente.setNome(clienteAtualizado.getNome());  // Atualizando nome
+            cliente.setCpf(clienteAtualizado.getCpf());  // Atualizando CPF
+            cliente.setEmail(clienteAtualizado.getEmail());  // Atualizando e-mail
+            cliente.setTipoCliente(clienteAtualizado.getTipoCliente());  // Atualizando tipo de cliente
+            cliente.setTelefone(clienteAtualizado.getTelefone());  // Atualizando telefone
             return clienteRepository.save(cliente);
         });
     }
