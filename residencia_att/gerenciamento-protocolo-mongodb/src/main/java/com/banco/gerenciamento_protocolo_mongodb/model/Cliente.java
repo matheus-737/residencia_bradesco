@@ -1,23 +1,25 @@
 package com.banco.gerenciamento_protocolo_mongodb.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "clientes")
+@Document
 public class Cliente {
 
     @Id
     private String id;
 
-    private String nome;  // Primeiro: Nome
-    private String cpf;   // Segundo: CPF
-    private String email; // Terceiro: E-mail
-    private TipoCliente tipoCliente; // Quarto: Tipo de cliente
-    private Telefone telefone; // Quinto: Telefone
+    private String nome;
+    private String cpf;
+    private String email;
+    private String tipoCliente;  // Exemplo: "FISICO" ou "JURIDICO"
+    private Telefone telefone;   // Detalhamento do telefone
 
-    public Cliente() {}
+    public Cliente() {
+    }
 
-    public Cliente(String nome, String cpf, String email, TipoCliente tipoCliente, Telefone telefone) {
+    public Cliente(String nome, String cpf, String email, String tipoCliente, Telefone telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
@@ -26,7 +28,6 @@ public class Cliente {
     }
 
     // Getters e Setters
-
     public String getId() {
         return id;
     }
@@ -36,19 +37,19 @@ public class Cliente {
     }
 
     public String getNome() {
-        return nome;  // Getter para o novo atributo
+        return nome;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;  // Setter para o novo atributo
+        this.nome = nome;
     }
 
     public String getCpf() {
-        return cpf;  // Getter para o CPF
+        return cpf;
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;  // Setter para o CPF
+        this.cpf = cpf;
     }
 
     public String getEmail() {
@@ -59,11 +60,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public TipoCliente getTipoCliente() {
+    public String getTipoCliente() {
         return tipoCliente;
     }
 
-    public void setTipoCliente(TipoCliente tipoCliente) {
+    public void setTipoCliente(String tipoCliente) {
         this.tipoCliente = tipoCliente;
     }
 
@@ -75,60 +76,15 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    // Enum TipoCliente
-
-    public enum TipoCliente {
-        FISICO,
-        JURIDICO
-    }
-
-    // Classe interna Telefone
-
-    public static class Telefone {
-        private String numero;
-        private String ddd;
-        private TipoTelefone tipoTelefone;
-
-        public Telefone() {}
-
-        public Telefone(String numero, String ddd, TipoTelefone tipoTelefone) {
-            this.numero = numero;
-            this.ddd = ddd;
-            this.tipoTelefone = tipoTelefone;
-        }
-
-        // Getters e Setters para Telefone
-
-        public String getNumero() {
-            return numero;
-        }
-
-        public void setNumero(String numero) {
-            this.numero = numero;
-        }
-
-        public String getDdd() {
-            return ddd;
-        }
-
-        public void setDdd(String ddd) {
-            this.ddd = ddd;
-        }
-
-        public TipoTelefone getTipoTelefone() {
-            return tipoTelefone;
-        }
-
-        public void setTipoTelefone(TipoTelefone tipoTelefone) {
-            this.tipoTelefone = tipoTelefone;
-        }
-    }
-
-    // Enum TipoTelefone
-
-    public enum TipoTelefone {
-        RESIDENCIAL,
-        COMERCIAL,
-        CELULAR
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", tipoCliente='" + tipoCliente + '\'' +
+                ", telefone=" + telefone +
+                '}';
     }
 }
