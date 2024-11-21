@@ -22,25 +22,25 @@ public class FuncionarioService {
         return funcionarioRepository.findAll();
     }
 
-    public Optional<Funcionario> buscarPorCodigo(String codigoFuncional) {
-        return funcionarioRepository.findByCodigoFuncional(codigoFuncional);
+    public Optional<Funcionario> buscarPorId(String id) {
+        return funcionarioRepository.findById(id);
     }
 
     public Funcionario salvarFuncionario(Funcionario funcionario) {
         return funcionarioRepository.save(funcionario);
     }
 
-    public void atualizarStatusFuncionario(String codigoFuncional, String status) {
-        Optional<Funcionario> funcionarioOpt = funcionarioRepository.findByCodigoFuncional(codigoFuncional);
+    public void atualizarCargoFuncionario(String id, String cargo) {
+        Optional<Funcionario> funcionarioOpt = funcionarioRepository.findById(id);
         if (funcionarioOpt.isPresent()) {
             Funcionario funcionario = funcionarioOpt.get();
-            funcionario.setStatus(status);
+            funcionario.setCargo(cargo);
             funcionarioRepository.save(funcionario);
         }
     }
-    //
-    public boolean deletarPorCodigo(String codigoFuncional) {
-        Optional<Funcionario> funcionario = funcionarioRepository.findByCodigoFuncional(codigoFuncional);
+
+    public boolean deletarFuncionario(String id) {
+        Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
         if (funcionario.isPresent()) {
             funcionarioRepository.delete(funcionario.get());
             return true;
